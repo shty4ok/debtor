@@ -1,0 +1,9 @@
+<form [formGroup]="fg" (ngSubmit)="submit()">
+  <label for="name">Имя</label>
+    <input type="text" formControlName="name" id="name">
+  <label for="name">Сумма</label>
+   <input type="text" formControlName="count" id="count">
+  <label for="name">Дата</label>
+   <input type="text" formControlName="date" id="date">
+  <button type="submit">Add</button>
+</form>
