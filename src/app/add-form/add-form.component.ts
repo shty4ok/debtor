@@ -1,5 +1,7 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormGroup} from "@angular/forms";
+import {ApiService} from "../api.service";
+import {DataDebtor} from "../data";
 
 @Component({
   selector: 'app-add-form',
@@ -8,9 +10,10 @@ import {FormBuilder, FormGroup} from "@angular/forms";
 })
 export class AddFormComponent implements OnInit {
   fg: FormGroup;
+
   @Output() onChanger = new EventEmitter()
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private apiService: ApiService) {
     this.fg = this.fb.group({
       name: [''],
       count: [''],
@@ -22,7 +25,8 @@ export class AddFormComponent implements OnInit {
   }
 
   submit() {
-  this.onChanger.emit(this.fg);
+    this.apiService.postData(this.fg.value);
+  // this.onChanger.emit(this.fg);
   }
 
 }
