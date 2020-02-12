@@ -23,6 +23,9 @@ export class AddFormComponent implements OnInit {
   }
 
   submit() {
-    this.apiService.postData(this.fg.value);
+    this.apiService.postData(this.fg.value).subscribe(() => {
+      alert('add debtor');
+      this.fg.reset();
+    });
   }
 }
