@@ -11,8 +11,6 @@ import {DataDebtor} from "../data";
 export class AddFormComponent implements OnInit {
   fg: FormGroup;
 
-  @Output() onChanger = new EventEmitter()
-
   constructor(private fb: FormBuilder, private apiService: ApiService) {
     this.fg = this.fb.group({
       name: [''],
@@ -26,7 +24,5 @@ export class AddFormComponent implements OnInit {
 
   submit() {
     this.apiService.postData(this.fg.value);
-  // this.onChanger.emit(this.fg);
   }
-
 }

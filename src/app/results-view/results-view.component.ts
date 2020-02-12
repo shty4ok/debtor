@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {FormGroup} from "@angular/forms";
+import {ApiService} from "../api.service";
+import {DataDebtor} from "../data";
 
 @Component({
   selector: 'app-results-view',
@@ -7,11 +8,17 @@ import {FormGroup} from "@angular/forms";
   styleUrls: ['./results-view.component.css']
 })
 export class ResultsViewComponent implements OnInit {
-  @Input() addItem;
 
-  constructor() { }
+  addItem: DataDebtor;
+
+  constructor(private apiService: ApiService) { }
 
   ngOnInit(): void {
+    this.getDebtorArray();
   }
 
+  getDebtorArray() {
+    this.apiService.getData().subscribe(response => this.addItem = response);
+
+  }
 }
