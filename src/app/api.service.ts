@@ -20,4 +20,5 @@ export class ApiService {
   public postData(dataSend: DataDebtor): Observable<DataDebtor> {
     return this.httpClient.post<DataDebtor>(`${this.apiUrl}/api/data`, dataSend, {responseType: 'json'});
   }
+  public login()
 }

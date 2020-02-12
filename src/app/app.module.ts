@@ -6,12 +6,14 @@ import { AppComponent } from './app.component';
 import { AddFormComponent } from './add-form/add-form.component';
 import { ResultsViewComponent } from './results-view/results-view.component';
 import {ReactiveFormsModule} from "@angular/forms";
+import { AuthComponent } from './auth/auth.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AddFormComponent,
-    ResultsViewComponent
+    ResultsViewComponent,
+    AuthComponent
   ],
     imports: [
         BrowserModule,

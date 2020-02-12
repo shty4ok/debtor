@@ -9,8 +9,4 @@ export class AppComponent {
   items = [];
   title = 'Dolzhok';
 
-  changes(formValue) {
-    this.items.push(formValue.value);
-    console.log('main: ' + this.items);
-  }
 }
