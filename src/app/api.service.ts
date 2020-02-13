@@ -14,11 +14,11 @@ export class ApiService {
   constructor(private httpClient: HttpClient) { }
 
   public getData(): Observable<DataDebtor> {
-    return this.httpClient.get<DataDebtor>(`${this.apiUrl}/api/data`);
+    return this.httpClient.get<DataDebtor>(`${this.apiUrl}api/data`);
   }
 
   public postData(dataSend: DataDebtor): Observable<DataDebtor> {
-    return this.httpClient.post<DataDebtor>(`${this.apiUrl}/api/data`, dataSend, {responseType: 'json'});
+    return this.httpClient.post<DataDebtor>(`${this.apiUrl}api/data`, dataSend, {responseType: 'json'});
   }
-  public login()
+
 }

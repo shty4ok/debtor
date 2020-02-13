@@ -19,6 +19,5 @@ export class ResultsViewComponent implements OnInit {
 
   getDebtorArray() {
     this.apiService.getData().subscribe(response => this.addItem = response);
-
   }
 }

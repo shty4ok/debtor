@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup} from "@angular/forms";
-import {ApiService} from "../api.service";
+import {AuthService} from "../auth.service";
 
 @Component({
   selector: 'app-auth',
@@ -12,7 +12,7 @@ export class AuthComponent implements OnInit {
 
   constructor(
     private fb:FormBuilder,
-    private apiService:ApiService
+    private authService:AuthService
   ) {
     this.authFg = this.fb.group( {
       login: [''],
@@ -27,7 +27,8 @@ export class AuthComponent implements OnInit {
     if (this.authFg.invalid) {
       return;
     }
+    console.log(this.authFg.value);
 
-    this.apiService.login(this.authFg).subscribe();
+    this.authService.login(this.authFg.value).subscribe();
   }
 }
