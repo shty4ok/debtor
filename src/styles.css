@@ -3,6 +3,12 @@ main {
   align-items: center;
   justify-content: space-around;
 }
+.authForm {
+ display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
 /* внешние границы таблицы серого цвета толщиной 1px */
 table {border: 1px solid grey;}
 /* границы ячеек первого ряда таблицы */
