@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { environment } from "./environments/environments";
+import {ApiService} from './api.service';
 
 @Injectable({
   providedIn: 'root'
@@ -9,10 +10,10 @@ import { environment } from "./environments/environments";
 export class AuthService {
   apiUrl = environment.apiUrl;
 
-  constructor( private httpClient: HttpClient) { }
+  constructor( private httpClient: HttpClient, private apiService: ApiService) { }
 
   public login(authFg): Observable<any> {
-    return this.httpClient.post<any>(`${this.apiUrl}api/auth`, authFg, {responseType: 'json'});
+    return this.apiService.postlogin<any>(authFg).subscribe();
   }
   public methodToken() {
     return 'Bearer';

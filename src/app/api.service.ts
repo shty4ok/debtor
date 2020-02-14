@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {Observable} from "rxjs";
 import {HttpClient} from "@angular/common/http";
-import {DataDebtor} from "./data";
+import {Debts} from "./data";
 import { environment } from "./environments/environments";
 
 @Injectable({
@@ -13,12 +13,15 @@ export class ApiService {
 
   constructor(private httpClient: HttpClient) { }
 
-  public getData(): Observable<DataDebtor> {
-    return this.httpClient.get<DataDebtor>(`${this.apiUrl}api/data`);
+  public postlogin(authFg): Observable<any> {
+    return this.httpClient.post<any>(`${this.apiUrl}api/auth`, authFg, {responseType: 'json'});
+  }
+  public getData(): Observable<Debts> {
+    return this.httpClient.get<Debts>(`${this.apiUrl}api/data`);
   }
 
-  public postData(dataSend: DataDebtor): Observable<DataDebtor> {
-    return this.httpClient.post<DataDebtor>(`${this.apiUrl}api/data`, dataSend, {responseType: 'json'});
+  public postData(dataSend: Debts): Observable<Debts> {
+    return this.httpClient.post<Debts>(`${this.apiUrl}api/data`, dataSend, {responseType: 'json'});
   }
 
 }

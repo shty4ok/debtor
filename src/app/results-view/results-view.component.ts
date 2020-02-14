@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {ApiService} from "../api.service";
-import {DataDebtor} from "../data";
+import {ApiService} from '../api.service';
+import {Debts} from '../data';
 
 @Component({
   selector: 'app-results-view',
@@ -9,7 +9,7 @@ import {DataDebtor} from "../data";
 })
 export class ResultsViewComponent implements OnInit {
 
-  addItem: DataDebtor;
+  debts: Debts;
 
   constructor(private apiService: ApiService) { }
 
@@ -18,6 +18,6 @@ export class ResultsViewComponent implements OnInit {
   }
 
   getDebtorArray() {
-    this.apiService.getData().subscribe(response => this.addItem = response);
+    this.apiService.getData().subscribe(response => this.debts = response);
   }
 }

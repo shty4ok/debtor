@@ -5,9 +5,9 @@
     <th>Сколько</th>
     <th>Дата возврата</th>
   </tr>
-  <tr *ngFor="let item of addItem">
-    <td>{{item.name}}</td>
-    <td>{{item.count}}</td>
-    <td>{{item.date}}</td>
+  <tr *ngFor="let debt of debts">
+    <td>{{debt.name}}</td>
+    <td>{{debt.count}}</td>
+    <td>{{debt.date}}</td>
   </tr>
 </table>

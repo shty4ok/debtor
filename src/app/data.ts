@@ -1,5 +1,5 @@
-export interface DataDebtor {
-  name: number,
-  count: number,
-  date: string
+export interface Debts {
+  name: number;
+  count: number;
+  date: string;
 }
