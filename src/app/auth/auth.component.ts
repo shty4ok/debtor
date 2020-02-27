@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup} from '@angular/forms';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {AuthService} from '../auth.service';
 
 @Component({
@@ -15,8 +15,8 @@ export class AuthComponent implements OnInit {
     private authService: AuthService
   ) {
     this.authFg = this.fb.group( {
-      login: [''],
-      password: ['']
+      login: ['', Validators.required],
+      password: ['', Validators.required]
     });
   }
 
@@ -27,8 +27,7 @@ export class AuthComponent implements OnInit {
     if (this.authFg.invalid) {
       return;
     }
+    this.authService.login(this.authFg.value);
     console.log(this.authFg.value);
-
-    this.authService.login(this.authFg.value).subscribe();
   }
 }

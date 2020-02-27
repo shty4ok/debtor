@@ -1,19 +1,21 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from "@angular/common/http";
-import { Observable } from "rxjs";
-import { environment } from "./environments/environments";
+import { HttpClient } from '@angular/common/http';
 import {ApiService} from './api.service';
+import {Router} from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  apiUrl = environment.apiUrl;
+  authRes = true;
+  constructor(private router: Router, private httpClient: HttpClient, private apiService: ApiService) { }
 
-  constructor( private httpClient: HttpClient, private apiService: ApiService) { }
-
-  public login(authFg): Observable<any> {
-    return this.apiService.postlogin<any>(authFg).subscribe();
+  public login(authFg) {
+    this.apiService.postLogin(authFg).subscribe(authRes => this.authRes = authRes);
+    console.log(this.authRes);
+    if (this.authRes) {
+      this.router.navigateByUrl(`main`);
+    }
   }
   public methodToken() {
     return 'Bearer';

@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import {Observable} from "rxjs";
-import {HttpClient} from "@angular/common/http";
-import {Debts} from "./data";
-import { environment } from "./environments/environments";
+import {Observable} from 'rxjs';
+import {HttpClient} from '@angular/common/http';
+import {Debts} from './data';
+import { environment } from './environments/environments';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +13,7 @@ export class ApiService {
 
   constructor(private httpClient: HttpClient) { }
 
-  public postlogin(authFg): Observable<any> {
+  public postLogin(authFg): Observable<any> {
     return this.httpClient.post<any>(`${this.apiUrl}api/auth`, authFg, {responseType: 'json'});
   }
   public getData(): Observable<Debts> {

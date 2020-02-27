@@ -1,7 +1,6 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
-import {FormBuilder, FormGroup} from "@angular/forms";
-import {ApiService} from "../api.service";
-import {Debts} from "../data";
+import {FormBuilder, FormGroup} from '@angular/forms';
+import {ApiService} from '../api.service';
 
 @Component({
   selector: 'app-add-form',

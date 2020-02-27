@@ -1,7 +1,9 @@
 <form class="authForm" [formGroup]="authFg" (ngSubmit)="onSubmit()">
   <label for="login">Login</label>
-    <input formControlName="login" type="text" id="login">
+    <input formControlName="login" type="text" id="login" >
+  <div [hidden]="authFg.controls['login'].value || authFg.controls['login'].untouched" class="alert alert-danger">Введите логин</div>
   <label for="password">Password</label>
     <input formControlName="password" type="text" id="password">
+      <div [hidden]="authFg.controls['password'].valid || authFg.controls['password'].untouched" class="alert alert-danger">Введите пароль</div>
   <button type="submit">Login</button>
 </form>
