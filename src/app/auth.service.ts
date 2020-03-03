@@ -7,15 +7,16 @@ import {Router} from '@angular/router';
   providedIn: 'root'
 })
 export class AuthService {
-  authRes = true;
   constructor(private router: Router, private httpClient: HttpClient, private apiService: ApiService) { }
 
   public login(authFg) {
-    this.apiService.postLogin(authFg).subscribe(authRes => this.authRes = authRes);
-    console.log(this.authRes);
-    if (this.authRes) {
-      this.router.navigateByUrl(`main`);
-    }
+    this.apiService.postLogin(authFg).subscribe(authRes => {
+      if (authRes) {
+        this.router.navigateByUrl(`main`);
+      } else {
+        this.router.navigateByUrl('');
+      }
+    });
   }
   public methodToken() {
     return 'Bearer';

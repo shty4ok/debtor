@@ -28,6 +28,5 @@ export class AuthComponent implements OnInit {
       return;
     }
     this.authService.login(this.authFg.value);
-    console.log(this.authFg.value);
   }
 }
