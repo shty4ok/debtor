@@ -7,21 +7,23 @@ import {Router} from '@angular/router';
   providedIn: 'root'
 })
 export class AuthService {
+  authResData = '';
   constructor(private router: Router, private httpClient: HttpClient, private apiService: ApiService) { }
 
   public login(authFg) {
     this.apiService.postLogin(authFg).subscribe(authRes => {
-      if (authRes) {
-        this.router.navigateByUrl(`main`);
-      } else {
-        this.router.navigateByUrl('');
-      }
+      this.authResData = authRes;
     });
   }
-  public methodToken() {
-    return 'Bearer';
-  }
   public getToken() {
-    return '1A2b3C4d5E6f7G8h9IAgBKClD';
+    console.dir(this.authResData);
+    if (this.authResData !== null) {
+      console.log('authRes !== null' + this.authResData);
+      this.router.navigateByUrl(`main`);
+      return this.authResData;
+    } else {
+      console.log('RES');
+      this.router.navigateByUrl('');
+    }
   }
 }
