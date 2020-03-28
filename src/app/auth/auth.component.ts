@@ -29,6 +29,7 @@ export class AuthComponent implements OnInit {
     if (this.authFg.invalid) {
       return;
     }
+    this.authService.login(this.authFg.value);
     this.authService.login(this.authFg.value).subscribe(authRes => {
       if (authRes) {
         this.router.navigateByUrl(`main`);

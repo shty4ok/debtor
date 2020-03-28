@@ -8,7 +8,6 @@ import { environment } from './environments/environments';
   providedIn: 'root'
 })
 export class ApiService {
-
   apiUrl = environment.apiUrl;
 
   constructor(private httpClient: HttpClient) { }
@@ -19,9 +18,7 @@ export class ApiService {
   public getData(): Observable<Debts> {
     return this.httpClient.get<Debts>(`${this.apiUrl}api/data`);
   }
-
   public postData(dataSend: Debts): Observable<Debts> {
     return this.httpClient.post<Debts>(`${this.apiUrl}api/data`, dataSend, {responseType: 'json'});
   }
-
 }
