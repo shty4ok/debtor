@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import {ApiService} from './api.service';
 import {Router} from '@angular/router';
 
@@ -8,7 +7,7 @@ import {Router} from '@angular/router';
 })
 export class AuthService {
   authResData;
-  constructor(private router: Router, private httpClient: HttpClient, private apiService: ApiService) { }
+  constructor(private router: Router, private apiService: ApiService) { }
 
   public login(authFg) {
     this.apiService.postLogin(authFg).subscribe(authRes => {
