@@ -7,6 +7,7 @@ import {Router} from '@angular/router';
   providedIn: 'root'
 })
 export class AuthService {
+  private tokenAuth;
 
   constructor(private router: Router, private httpClient: HttpClient, private apiService: ApiService) { }
 
@@ -16,7 +17,10 @@ export class AuthService {
   public methodToken() {
     return 'Bearer';
   }
+  public setToken(token) {
+    return localStorage.setItem('token', token);
+  }
   public getToken() {
-    return '1A2b3C4d5E6f7G8h9IAgBKClD';
+    return localStorage.getItem('token');
   }
 }

@@ -16,9 +16,12 @@ export class ApiService {
     return this.httpClient.post<any>(`${this.apiUrl}api/auth`, authFg, {responseType: 'json'});
   }
   public getData(): Observable<Debts> {
-    return this.httpClient.get<Debts>(`${this.apiUrl}api/data`);
+    return this.httpClient.get<Debts>(`${this.apiUrl}api/debts`);
   }
   public postData(dataSend: Debts): Observable<Debts> {
-    return this.httpClient.post<Debts>(`${this.apiUrl}api/data`, dataSend, {responseType: 'json'});
+    return this.httpClient.post<Debts>(`${this.apiUrl}api/debts`, dataSend, {responseType: 'json'});
+  }
+  public deleteData(idItem: number): Observable<boolean> {
+    return this.httpClient.delete<boolean>(`${this.apiUrl}api/debts/${idItem}`);
   }
 }

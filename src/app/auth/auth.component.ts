@@ -29,10 +29,12 @@ export class AuthComponent implements OnInit {
     if (this.authFg.invalid) {
       return;
     }
-    this.authService.login(this.authFg.value);
     this.authService.login(this.authFg.value).subscribe(authRes => {
-      if (authRes) {
+      if (authRes.status) {
+        this.authService.setToken(authRes.token);
         this.router.navigateByUrl(`main`);
+      } else {
+        this.router.navigateByUrl('');
       }
     });
   }

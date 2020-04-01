@@ -5,9 +5,11 @@
     <th>Сколько</th>
     <th>Дата возврата</th>
   </tr>
-  <tr *ngFor="let debt of debts">
+  <tr *ngFor="let debt of dataDebts">
+    <td>{{debt.id}}</td>
     <td>{{debt.name}}</td>
-    <td>{{debt.count}}</td>
+    <td>{{debt.amount}}</td>
     <td>{{debt.date}}</td>
+    <td><button (click)="deleteItem(debt.id)">Delete</button></td>
   </tr>
 </table>

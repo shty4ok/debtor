@@ -1,5 +1,6 @@
 export interface Debts {
-  name: number;
-  count: number;
+  id: number;
+  name: string;
+  amount: number;
   date: string;
 }

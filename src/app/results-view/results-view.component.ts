@@ -8,16 +8,20 @@ import {Debts} from '../data';
   styleUrls: ['./results-view.component.css']
 })
 export class ResultsViewComponent implements OnInit {
-
-  debts: Debts;
-
-  constructor(private apiService: ApiService) { }
+  dataDebts: Debts;
+  constructor(private apiService: ApiService) {
+  }
 
   ngOnInit(): void {
     this.getDebtorArray();
   }
-
+  deleteItem(id) {
+    this.apiService.deleteData(id).subscribe();
+    this.getDebtorArray();
+  }
   getDebtorArray() {
-    this.apiService.getData().subscribe(response => this.debts = response);
+    this.apiService.getData().subscribe(response => {
+      this.dataDebts = response;
+    });
   }
 }
