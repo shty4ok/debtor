@@ -31,9 +31,11 @@ export class AuthComponent implements OnInit {
     }
     this.authService.login(this.authFg.value).subscribe(authRes => {
       if (authRes.status) {
+        this.authService.isLogin(true);
         this.authService.setToken(authRes.token);
         this.router.navigateByUrl(`main`);
       } else {
+        this.authService.isLogin(false);
         this.router.navigateByUrl('');
       }
     });
