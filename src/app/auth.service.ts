@@ -7,12 +7,8 @@ import {Router} from '@angular/router';
   providedIn: 'root'
 })
 export class AuthService {
-  checkLogin;
   constructor(private router: Router, private httpClient: HttpClient, private apiService: ApiService) { }
 
-  public isLogin(logIN) {
-    this.checkLogin = logIN;
-  }
   public login(authFg) {
     return this.apiService.postLogin(authFg);
   }
