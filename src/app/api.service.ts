@@ -10,7 +10,7 @@ import { environment } from './environments/environments';
 export class ApiService {
   apiUrl = environment.apiUrl;
   private behaviourSubject = new BehaviorSubject<Debts>(null);
-
+  private aaa;
   constructor(private httpClient: HttpClient) { }
 
   public postLogin(authFg): Observable<any> {
@@ -24,14 +24,16 @@ export class ApiService {
   }
   private getData() {
     return this.httpClient.get<Debts>(`${this.apiUrl}api/debts`)
-      .subscribe((data) => {
+     .subscribe((data) => {
         this.behaviourSubject.next(data);
       });
   }
   public postData(dataSend: Debts): Observable<Debts> {
+    this.getData();
     return this.httpClient.post<Debts>(`${this.apiUrl}api/debts`, dataSend, {responseType: 'json'});
   }
   public deleteData(idItem: number): Observable<boolean> {
+    this.getData();
     return this.httpClient.delete<boolean>(`${this.apiUrl}api/debts/${idItem}`);
   }
 }
