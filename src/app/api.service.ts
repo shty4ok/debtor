@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Observable} from 'rxjs';
+import {BehaviorSubject, Observable} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 import {Debts} from './data';
 import { environment } from './environments/environments';
@@ -9,14 +9,24 @@ import { environment } from './environments/environments';
 })
 export class ApiService {
   apiUrl = environment.apiUrl;
+  private behaviourSubject = new BehaviorSubject<Debts>(null);
 
   constructor(private httpClient: HttpClient) { }
 
   public postLogin(authFg): Observable<any> {
     return this.httpClient.post<any>(`${this.apiUrl}api/auth`, authFg, {responseType: 'json'});
   }
-  public getData(): Observable<Debts> {
-    return this.httpClient.get<Debts>(`${this.apiUrl}api/debts`);
+  public getCheckedData() {
+    if (!this.behaviourSubject.value) {
+      this.getData();
+    }
+    return this.behaviourSubject.asObservable();
+  }
+  private getData() {
+    return this.httpClient.get<Debts>(`${this.apiUrl}api/debts`)
+      .subscribe((data) => {
+        this.behaviourSubject.next(data);
+      });
   }
   public postData(dataSend: Debts): Observable<Debts> {
     return this.httpClient.post<Debts>(`${this.apiUrl}api/debts`, dataSend, {responseType: 'json'});

@@ -8,7 +8,6 @@ import { ResultsViewComponent } from './results-view/results-view.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import { AuthComponent } from './auth/auth.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
-import {ApiService} from './api.service';
 import {AuthInterceptor} from './auth.interceptor';
 import {AuthService} from './auth.service';
 import { MainComponent } from './main/main.component';

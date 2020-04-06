@@ -17,10 +17,9 @@ export class ResultsViewComponent implements OnInit {
   }
   deleteItem(id) {
     this.apiService.deleteData(id).subscribe();
-    this.getDebtorArray();
   }
   getDebtorArray() {
-    this.apiService.getData().subscribe(response => {
+    this.apiService.getCheckedData().subscribe(response => {
       this.dataDebts = response;
     });
   }
